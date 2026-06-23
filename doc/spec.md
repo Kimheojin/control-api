@@ -4,6 +4,9 @@
 
 * 프로젝트 전반의 구조, 테스트, API, 영속성, 문서화 규칙을 담은 루트 `AGENTS.md` 추가
 * 로컬 개발 및 테스트를 위한 임시 H2 데이터소스 지원 추가
+* Spring Security 기반 CORS 설정 추가
+  * 허용 Origin은 `https://control-front-navy.vercel.app` 단일 도메인
+  * 현재 MVP 단계에서는 모든 요청을 인증 없이 허용
 
 ## 데이터베이스 참고 사항
 
