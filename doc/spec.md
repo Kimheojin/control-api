@@ -16,6 +16,15 @@
   * JPA 객체 연관관계는 두지 않고 `routeId`, `stopId`, `busId` 같은 FK ID 컬럼으로 참조
   * ERD의 unique 제약과 조회용 인덱스 후보를 엔티티 매핑에 반영
 * QueryDSL 사용을 위한 의존성, annotation processor, `JPAQueryFactory` 설정 추가
+* `doc/endpoint.md`에 정의된 공개 조회 API 4개 구현
+  * `GET /v1/buses`: 상태, 노선 ID, 키워드, 페이지 조건을 지원하는 버스 목록 조회
+  * `GET /v1/buses/{busId}`: 버스 상세, 노선 정보, 최신 위치 조회
+  * `GET /v1/buses/{busId}/events`: 특정 버스의 최근 이벤트 조회
+  * `GET /v1/events`: 전체 최근 이벤트 조회 및 이벤트 유형 필터 지원
+  * `ONLINE` / `OFFLINE` 상태는 조회 시점의 UTC 기준 현재 시각과 `last_communicated_at` 차이로 계산
+  * 목록 및 이벤트 조인 조회는 FK ID 기반 엔티티 설계를 유지하고 QueryDSL custom repository로 구현
+  * `page`, `size`, `limit`, enum 파라미터 오류는 공통 `INVALID_REQUEST` 응답으로 처리
+  * 존재하지 않는 버스 상세 또는 버스별 이벤트 조회는 `BUS_NOT_FOUND` 응답으로 처리
 
 ## 데이터베이스 참고 사항
 

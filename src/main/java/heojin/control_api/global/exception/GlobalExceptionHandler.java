@@ -29,7 +29,8 @@ public class GlobalExceptionHandler {
 			MethodArgumentTypeMismatchException.class,
 			HttpMessageNotReadableException.class,
 			HttpRequestMethodNotSupportedException.class,
-			HttpMediaTypeNotSupportedException.class
+			HttpMediaTypeNotSupportedException.class,
+			IllegalArgumentException.class
 	})
 	public ResponseEntity<ErrorResponse> handleInvalidRequestException(Exception exception) {
 		return createErrorResponse(ErrorCode.INVALID_REQUEST);
