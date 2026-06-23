@@ -45,4 +45,24 @@ public class BusEvent {
 
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
+
+	public static BusEvent record(
+			Long busId,
+			BusEventType type,
+			BigDecimal latitude,
+			BigDecimal longitude,
+			LocalDateTime occurredAt,
+			String description,
+			LocalDateTime createdAt
+	) {
+		BusEvent event = new BusEvent();
+		event.busId = busId;
+		event.type = type;
+		event.latitude = latitude;
+		event.longitude = longitude;
+		event.occurredAt = occurredAt;
+		event.description = description;
+		event.createdAt = createdAt;
+		return event;
+	}
 }

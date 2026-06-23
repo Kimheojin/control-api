@@ -39,4 +39,22 @@ public class BusLocation {
 
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
+
+	public static BusLocation record(
+			Long busId,
+			BigDecimal latitude,
+			BigDecimal longitude,
+			Integer speedKph,
+			LocalDateTime recordedAt,
+			LocalDateTime createdAt
+	) {
+		BusLocation location = new BusLocation();
+		location.busId = busId;
+		location.latitude = latitude;
+		location.longitude = longitude;
+		location.speedKph = speedKph;
+		location.recordedAt = recordedAt;
+		location.createdAt = createdAt;
+		return location;
+	}
 }

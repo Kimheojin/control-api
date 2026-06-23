@@ -38,4 +38,10 @@ public class Bus {
 
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
+
+	public void applyTelemetry(Integer currentSpeedKph, LocalDateTime lastCommunicatedAt, LocalDateTime updatedAt) {
+		this.currentSpeedKph = currentSpeedKph;
+		this.lastCommunicatedAt = lastCommunicatedAt;
+		this.updatedAt = updatedAt;
+	}
 }

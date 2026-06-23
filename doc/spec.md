@@ -25,6 +25,12 @@
   * 목록 및 이벤트 조인 조회는 FK ID 기반 엔티티 설계를 유지하고 QueryDSL custom repository로 구현
   * `page`, `size`, `limit`, enum 파라미터 오류는 공통 `INVALID_REQUEST` 응답으로 처리
   * 존재하지 않는 버스 상세 또는 버스별 이벤트 조회는 `BUS_NOT_FOUND` 응답으로 처리
+* `POST /v1/internal/telemetry` 텔레메트리 수신 API 구현
+  * Simulator 또는 차량 단말이 전송한 위치, 속도, 기록 시각을 `bus_locations`에 저장
+  * `buses.current_speed_kph`, `buses.last_communicated_at`, `buses.updated_at` 갱신
+  * 이벤트가 포함된 요청은 `bus_events`에 함께 저장
+  * 잘못된 요청 본문은 `INVALID_REQUEST`, 존재하지 않는 버스는 `BUS_NOT_FOUND` 응답으로 처리
+* 텔레메트리 상세 API 명세는 `doc/endpoint.md`에 두고, `doc/backend.md`의 중복 요청 예시와 처리 규칙은 요약 참조로 정리
 
 ## 데이터베이스 참고 사항
 
