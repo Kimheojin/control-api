@@ -11,6 +11,11 @@
   * 오류 응답은 `{ code, message }` 형식으로 통일
   * 요청 값 오류는 `INVALID_REQUEST`, 존재하지 않는 버스는 `BUS_NOT_FOUND`, 미처리 서버 오류는 `INTERNAL_SERVER_ERROR` 사용
   * 스택트레이스와 내부 구현 정보는 API 응답에 노출하지 않음
+* `doc/erd.md` 기준 JPA 엔티티와 Repository 추가
+  * `routes`, `stops`, `route_stops`, `buses`, `bus_locations`, `bus_events` 테이블 대응
+  * JPA 객체 연관관계는 두지 않고 `routeId`, `stopId`, `busId` 같은 FK ID 컬럼으로 참조
+  * ERD의 unique 제약과 조회용 인덱스 후보를 엔티티 매핑에 반영
+* QueryDSL 사용을 위한 의존성, annotation processor, `JPAQueryFactory` 설정 추가
 
 ## 데이터베이스 참고 사항
 

@@ -21,6 +21,7 @@
 
 - `doc/overview.md`: 프로젝트 목표, MVP 범위, 공통 정책
 - `doc/backend.md`: 백엔드 도메인, 영속성, 서비스 책임
+- `doc/erd.md`: ERD, 테이블 관계, FK/인덱스, 영속성 설계 원칙
 - `doc/endpoint.md`: REST API 엔드포인트, 요청/응답 형태, 오류 응답
 - `doc/front.md`: 프론트엔드 연동 기대사항
 - `doc/simul.md`: 버스 시뮬레이터 연동 기대사항
@@ -77,6 +78,8 @@ src/main/java/heojin/control_api
 - 현재 프로젝트는 로컬 개발 및 테스트용 임시 H2 datasource 설정을 사용한다. 스키마 작업은 이후 MySQL 마이그레이션과 호환되게 유지한다.
 - 현재 프로젝트에는 Flyway나 Liquibase가 없다. DB 스키마나 seed 데이터가 변경되면 관련 SQL/seed 변경을 포함하고 백엔드 문서를 업데이트한다.
 - 엔티티 관계, cascade, fetch 전략 변경은 영속성 및 직렬화 부작용을 검토해야 한다.
+- DB에는 FK를 두되 JPA 엔티티 객체 연관관계는 기본적으로 사용하지 않고 FK ID 컬럼으로 참조한다.
+- 조인이 필요한 조회는 QueryDSL 또는 명시적인 repository/custom repository 메서드로 필요한 시점에 추가한다.
 
 ## 테스트 규칙
 
