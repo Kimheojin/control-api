@@ -31,9 +31,16 @@
   * 이벤트가 포함된 요청은 `bus_events`에 함께 저장
   * 잘못된 요청 본문은 `INVALID_REQUEST`, 존재하지 않는 버스는 `BUS_NOT_FOUND` 응답으로 처리
 * 텔레메트리 상세 API 명세는 `doc/endpoint.md`에 두고, `doc/backend.md`의 중복 요청 예시와 처리 규칙은 요약 참조로 정리
+* Docker 및 프로파일 기반 실행 설정 추가
+  * 애플리케이션 기본 포트를 `9090`으로 설정
+  * 공통 설정은 `application.yaml`, 로컬 설정은 `application-local.yaml`, 배포 설정은 `application-prod.yaml`에 구성
+  * 테스트 설정은 배포 산출물에 포함되지 않도록 `src/test/resources/application.yaml`에 별도 구성
+  * 로컬 및 테스트 실행은 H2를 사용하고, 배포용 `prod` 프로파일은 MySQL 드라이버와 환경변수 기반 접속 정보를 사용
+  * `docker-compose.yml`은 `control-api` 컨테이너를 `9090:9090`으로 노출하고, 기존 외부 네트워크 `my-network`, `control-network`에 연결
+  * Dockerfile은 멀티 스테이지 빌드와 BuildKit Gradle 캐시 마운트를 사용
 
 ## 데이터베이스 참고 사항
 
-* 현재 데이터소스는 MySQL 호환 모드로 실행되는 H2 인메모리 데이터베이스
-* H2는 임시 구성으로, 향후 영속성 작업 시 MySQL 마이그레이션 고려 필요
+* `local` 설정과 테스트 전용 설정은 MySQL 호환 모드로 실행되는 H2 인메모리 데이터베이스 사용
+* `prod` 프로파일은 MySQL 접속을 사용하며, 현재 Docker Compose에는 더미 접속 정보가 들어 있음
 * Flyway 및 Liquibase는 아직 구성되지 않은 상태

@@ -1,0 +1,24 @@
+services:
+  control-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: control-api:latest
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      MYSQL_HOST: dummy-mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: control_api
+      MYSQL_USERNAME: control_api_user
+      MYSQL_PASSWORD: dummy_password
+    ports:
+      - "9090:9090"
+    networks:
+      - my-network
+      - control-network
+
+networks:
+  my-network:
+    external: true
+  control-network:
+    external: true
