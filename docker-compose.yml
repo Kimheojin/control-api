@@ -1,5 +1,6 @@
 services:
   control-api:
+    container_name: control-api
     build:
       context: .
       dockerfile: Dockerfile
