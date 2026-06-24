@@ -1,5 +1,7 @@
 # Implementation Notes
 
+이 문서는 서울시 버스 관제 시스템 MVP 구현 이력과 주요 결정 사항을 기록한다.
+
 ## 완료된 작업
 
 * 프로젝트 전반의 구조, 테스트, API, 영속성, 문서화 규칙을 담은 루트 `AGENTS.md` 추가
@@ -30,6 +32,11 @@
   * `buses.current_speed_kph`, `buses.last_communicated_at`, `buses.updated_at` 갱신
   * 이벤트가 포함된 요청은 `bus_events`에 함께 저장
   * 잘못된 요청 본문은 `INVALID_REQUEST`, 존재하지 않는 버스는 `BUS_NOT_FOUND` 응답으로 처리
+* CommandLineRunner 기반 초기 Seed Data 주입 추가
+  * `local`, `prod` 프로파일에서 애플리케이션 시작 시 실행
+  * `routes`, `stops`, `route_stops`, `buses` 기준 데이터만 주입하고 `bus_locations`, `bus_events`는 제외
+  * 대상 테이블 중 하나라도 데이터가 있으면 중복 삽입을 막기 위해 전체 Seed 주입을 건너뜀
+  * 상세 Seed 데이터 목록은 `doc/seedData.md`에 기록
 * 텔레메트리 상세 API 명세는 `doc/endpoint.md`에 두고, `doc/backend.md`의 중복 요청 예시와 처리 규칙은 요약 참조로 정리
 * Docker 및 프로파일 기반 실행 설정 추가
   * 애플리케이션 기본 포트를 `9090`으로 설정

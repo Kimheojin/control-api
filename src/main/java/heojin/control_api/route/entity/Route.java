@@ -32,4 +32,13 @@ public class Route {
 
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
+
+	public static Route create(String name, String description, LocalDateTime now) {
+		Route route = new Route();
+		route.name = name;
+		route.description = description;
+		route.createdAt = now;
+		route.updatedAt = now;
+		return route;
+	}
 }

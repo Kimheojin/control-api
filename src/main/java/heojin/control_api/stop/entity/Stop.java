@@ -36,4 +36,14 @@ public class Stop {
 
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
+
+	public static Stop create(String name, BigDecimal latitude, BigDecimal longitude, LocalDateTime now) {
+		Stop stop = new Stop();
+		stop.name = name;
+		stop.latitude = latitude;
+		stop.longitude = longitude;
+		stop.createdAt = now;
+		stop.updatedAt = now;
+		return stop;
+	}
 }

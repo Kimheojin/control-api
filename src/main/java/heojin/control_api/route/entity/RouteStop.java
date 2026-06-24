@@ -42,4 +42,14 @@ public class RouteStop {
 
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
+
+	public static RouteStop create(Long routeId, Long stopId, Integer stopOrder, LocalDateTime now) {
+		RouteStop routeStop = new RouteStop();
+		routeStop.routeId = routeId;
+		routeStop.stopId = stopId;
+		routeStop.stopOrder = stopOrder;
+		routeStop.createdAt = now;
+		routeStop.updatedAt = now;
+		return routeStop;
+	}
 }
