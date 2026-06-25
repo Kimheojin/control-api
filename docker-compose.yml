@@ -17,9 +17,12 @@ services:
     networks:
       - my-network
       - control-network
+      - simul-network
 
 networks:
   my-network:
     external: true
   control-network:
+    external: true
+  simul-network:
     external: true
