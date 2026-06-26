@@ -4,8 +4,6 @@
 - 버스 목록, 버스 상세, 최근 이벤트 조회 API 제공
 - Simulator 또는 차량 단말 텔레메트리 수신 API 제공
 - 초기 기준 데이터 Seed 자동 주입
-- 기본 실행 포트 `9090`
-  - application.yml + docker compose 지정
 
 ## 프로젝트 도식도
 
@@ -18,6 +16,8 @@
 - 로컬(테스트) 기본 DB H2 인메모리
 - 배포 프로필 `prod`
 - 배포 DB MySQL + Docker
+- 기본 실행 포트 `9090`
+  - application.yml + docker compose 지정
 
 ## 실행 방법
 
