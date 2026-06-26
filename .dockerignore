@@ -9,3 +9,4 @@ target
 *.log
 .env
 .env.*
+/img_1.png
