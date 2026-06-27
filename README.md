@@ -5,6 +5,8 @@
 - Simulator 또는 차량 단말 텔레메트리 수신 API 제공
 - 초기 기준 데이터 Seed 자동 주입
 
+## MVP 배포 URL : https://control-front-navy.vercel.app/
+
 ## 프로젝트 도식도
 
 ![img_1.png](img_1.png)
