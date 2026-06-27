@@ -60,6 +60,11 @@ MYSQL_PASSWORD
 - 반면 CommandLineRunner 는 대체로 Spring Context와 JPA EntityManagerFactory 초기화 이후 실행
   - repository나 테이블이 준비된 뒤 데이터를 넣는 흐름을 만드는 데 강점
 
+### RestClient
+
+- 외부 HTTP 호출이 필요한 구간에서 Spring MVC 기반의 동기 처리 흐름과 잘 맞는 `RestClient`를 사용
+- `RestTemplate`보다 최신 Spring HTTP client API에 가깝고, fluent API로 요청/응답 처리가 명확함
+- `WebClient`는 강력하지만, MVP 단계에서는 WebFlux 의존성과 리액티브 처리 모델까지 도입하는 것이 과하다고 판단
   
 ### bus-simulator 별도 컨테이너 구성
 
